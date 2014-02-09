@@ -1,0 +1,12 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1>Restaurant Reservation System</h1>
+
+
+<%= link_to "Add New Restaurant", new_restaurant_path %><br>
+
+<% @restaurants.each do |restaurant| %>
+	<%= link_to restaurant.name,restaurant_path(restaurant)  %><br>
+<% end %>

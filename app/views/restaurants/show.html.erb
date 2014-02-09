@@ -1,0 +1,27 @@
+<h1>Welcome to <%= @restaurant.name %></h1>
+
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+
+<%= form_for([@restaurant, @reservation]) do |f| %>
+  <p>To make a reservation please select your date</p>
+  <%= f.datetime_select :reservation_date, ampm: true, :default => (2.hours.from_now), :minute_step => 60, :discard_minute => true, :order => [:day, :month, :year, :hour] %><br>
+<p>Please enter your party size</p>
+  <p>
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+<% @restaurant.reservations.each do |reservation| %>
+	Reservation for: <%= @restaurant.name %>, Party of:	<%= reservation.party_size %> on <%= reservation.reservation_date %>
+	<%= link_to "Delete", restaurant_reservation_path(@restaurant, reservation), method: :delete %><br>
+<% end %>
+
+<%= link_to "Back to all restaurants", restaurants_path %>

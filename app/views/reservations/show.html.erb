@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<p> Your reservation for <%= @reservation.party_size %> people has been confimed </p>
+
+<%= link_to 'Exit', restaurants_path %>
