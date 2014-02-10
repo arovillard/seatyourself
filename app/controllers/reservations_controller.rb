@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+
   before_filter :load_restaurant
 
   def index
@@ -52,7 +53,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:id, :party_size, :restaurant_id, :reservation_date)
+    params.require(:reservation).permit(:id, :party_size, :restaurant_id, :reservation_date, :reservation_hour)
   end
 
   def load_restaurant
