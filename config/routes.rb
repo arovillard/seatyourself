@@ -1,9 +1,14 @@
 Seatyourself::Application.routes.draw do
 
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  resources :users, :only => [:new, :create]
 
   resources :restaurants do
     resources :reservations
   end
+
+
 
   # get "reservation_calc_seats_left" => "reservations#calc_seats_left", as: "calc_seats_left"
   # get "can_make_reservation" => "reservations#can_make_reservation", as: "can_make_reservation"

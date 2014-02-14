@@ -1,3 +1,9 @@
-<h1>Add New Restaurants</h1>
-
-<%= render "form" %>
+<section class="new-form">
+  <div class="frame">
+    <div class="new">
+      <h1>Add New Restaurants</h1>
+      <%= render 'form' %>
+      <%= link_to 'Cancel', restaurants_path %>
+    </div>
+  </div>
+</section>

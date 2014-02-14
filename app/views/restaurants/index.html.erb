@@ -1,12 +1,13 @@
-<% if flash[:notice] %>
-	<%= flash[:notice] %>
-<% end %>
-
-<h1>Restaurant Reservation System</h1>
-
-
-<%= link_to "Add New Restaurant", new_restaurant_path %><br>
-
-<% @restaurants.each do |restaurant| %>
-	<%= link_to restaurant.name,restaurant_path(restaurant)  %><br>
-<% end %>
+<section class="all-products">
+  <div class="frame">
+    <h1>Restaurant Reservation System</h1>
+    <% if current_user && current_user.user_type == 0 %>
+      <% unless current_user.restaurant %>
+        <%= link_to "Add New Restaurant", new_restaurant_path %><br>
+      <% end %>
+    <% end %>
+    <% @restaurants.each do |restaurant| %>
+	   <%= link_to restaurant.name,restaurant_path(restaurant) %><br>
+    <% end %>
+  </div>
+</section>

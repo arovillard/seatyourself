@@ -1,13 +1,68 @@
-<%=form_for(@restaurant) do |f| %>
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.label :capacity %>
-		<%= f.number_field :capacity %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-<% end %>
+<div class="new-restaurant-form">
+	<%=form_for(@restaurant) do |f| %>
+		<div class ="form-field">
+			<p>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+			</p>
+		</div >
+		<div class ="form-field">
+			<p>
+				<%= f.label :description %>
+				<%= f.text_field :description %>
+			</p>
+		</div >
+		<div class ="form-field">
+			<p>
+				<%= f.label :picture %>
+				<%= f.text_field :picture %>
+			</p>
+		</div >
+		<div class ="form-field">
+			<p>
+				<%= f.label :category1 %>
+				<%= f.text_field :category1 %>
+			</p>
+		</div >
+		<div class ="form-field">
+			<p>
+				<%= f.label :category2 %>
+				<%= f.text_field :category2 %>
+			</p>
+		</div >
+		<div class ="form-field">
+			<p>
+				<%= f.label :category3 %>
+				<%= f.text_field :category3 %>
+			</p>
+		</div >
+		<div class ="form-field">
+			<p>
+				<%= f.label :capacity %>
+				<%= f.number_field :capacity %>
+			</p>
+		</div>
+		<div class ="form-field">
+			<p>
+				<%= f.label :opening_hour %>
+				<%= f.select :opening_hour, options_for_select(hours) %>
+
+			</p>
+		</div>
+		<div class ="form-field">
+			<p>
+				<%= f.label :closing_hour %>
+				<%= f.select :closing_hour, options_for_select(hours) %>
+			</p>
+		</div>
+		<div class ="form-field">
+			<p>
+				<%= f.label :seating_cycle %>
+				<%= f.select :seating_cycle, options_for_select([["Select seating cycle"],["1 hour", 1], ["1.5 hours", 1.5], ["2 hours", 2], ["2.5 hours", 2.5], ["3 hours", 3]]) %>
+			</p>
+		</div>
+		<div class="submit button">
+			<p><%= f.submit %></p>
+		</div>
+		<% end %>
+	</div>

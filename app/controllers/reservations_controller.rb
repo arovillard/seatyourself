@@ -17,6 +17,7 @@ class ReservationsController < ApplicationController
     @party_size = params[:reservation][:party_size].to_i
   	if @party_size <= seats_left
       @reservation = @restaurant.reservations.build(reservation_params)
+      @reservation.user_id = current_user.id
 	  	if @reservation.save
         flash[:notice] = "Your reservation for #{ @reservation.party_size } people has been confimed"
 	  		redirect_to restaurant_path(:id => @restaurant.id)
@@ -42,8 +43,6 @@ class ReservationsController < ApplicationController
   	end
   end
 
-
-
   def destroy
   	@reservation = Reservation.find(params[:id])
   	@reservation.destroy
@@ -53,7 +52,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:id, :party_size, :restaurant_id, :reservation_date, :reservation_hour)
+    params.require(:reservation).permit(:id, :party_size, :restaurant_id, :reservation_date, :reservation_hour, :user_id, :name)
   end
 
   def load_restaurant
